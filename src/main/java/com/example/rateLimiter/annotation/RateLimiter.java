@@ -20,9 +20,4 @@ public @interface RateLimiter {
      * 限流次数
      */
     public int limitCount() default 100;
-
-    /**
-     * 限流类型
-     */
-//    public LimitType limitType() default LimitType.DEFAULT;
 }

@@ -20,5 +20,16 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.TOO_MANY_REQUESTS);
     }
 
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<String> handleServiceException(IllegalArgumentException e, HttpServletRequest request) {
+        log.error(e.getMessage(), e);
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(NotLoginException.class)
+    public ResponseEntity<String> handleServiceException(NotLoginException e, HttpServletRequest request) {
+        log.error(e.getMessage(), e);
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.UNAUTHORIZED);
+    }
 
 }
